@@ -37,12 +37,12 @@ class PypetterBrowser:
 
 
 class CsdnCrawl:
-    def __init__(self,start_page_num:int,end_page_num:int):
+    def __init__(self, start_page_num: int, end_page_num: int):
         self.PypetterInit = PypetterBrowser(browser_config)
         self.browser = None
         self.page = None
-        self.start=start_page_num
-        self.end=end_page_num
+        self.start = start_page_num
+        self.end = end_page_num
 
     async def goto_page(self, page_href):
         try:
@@ -110,7 +110,7 @@ class CsdnCrawl:
     async def main(self):
         self.browser, self.page = await self.PypetterInit.init_browser()
         try:
-            for page_num in range(self.start, self.end+1):
+            for page_num in range(self.start, self.end + 1):
                 results = self.get_csdn_search_info(page_num)
                 for result in results:
                     page_href = self.get_page_href(result)
@@ -123,5 +123,5 @@ class CsdnCrawl:
 
 
 if __name__ == '__main__':
-    csdn_crawl = CsdnCrawl(1,5)
+    csdn_crawl = CsdnCrawl(1, 5)
     asyncio.get_event_loop().run_until_complete(csdn_crawl.main())
