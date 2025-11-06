@@ -80,7 +80,7 @@ class CsdnCrawl:
             else:
                 data = [jianli_content]
 
-            async with aiofiles.open("jianli1.json", mode="w", encoding="utf-8") as f:
+            async with aiofiles.open("jianli.json", mode="w", encoding="utf-8") as f:
                 await f.write(json.dumps(data, ensure_ascii=False, indent=4))
 
             print(f'{h1_text},{page_href}爬取完成')
